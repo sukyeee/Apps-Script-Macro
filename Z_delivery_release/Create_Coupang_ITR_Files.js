@@ -12,15 +12,15 @@ let sheet_RE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("르엠마_�
 let lastRow = sheet_RE.getLastRow(); //마지막 데이터가있는 행    
 
 //숨겨진 행이 있는지 체크, 숨겨진행있으면 createFIlter 불가. ㅡ 있다면 필터 해제 (시간 너무 오래걸림)
-// for(let i=4;i<lastRow;i++){ 
-//  if(sheet_RE.isRowHiddenByFilter(i) ){
-//    console.log(i)
-//    var spreadsheet = SpreadsheetApp.getActive();
-//       spreadsheet.getRange('A1:T1').activate();
-//       spreadsheet.getActiveSheet().getFilter().remove();
-//    break;
-//  }
-// }
+
+if(sheet_RE.isRowHiddenByFilter(4) ){
+//  Browser.msgBox('알림','르엠마_제트배송에 필터를 해제 후 다시 시도해주세요. ',Browser.Buttons.OK)
+//   return 0;
+    sheet_RE.getRange('A1:T1').activate();
+    sheet_RE.getFilter().remove();
+
+}
+
 
 if( sheet_RE.getFilter() == null) sheet_RE.getRange(`A1:T${lastRow}`).createFilter();
 
@@ -95,15 +95,12 @@ let sheet_LE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("엘이엠_�
   lastRow = sheet_LE.getLastRow(); //마지막 데이터가있는 행    
 
 //숨겨진 행이 있는지 체크, 숨겨진행있으면 createFIlter 불가. ㅡ 있다면 필터 해제 (시간 너무 오래걸림)
-// for(let i=4;i<lastRow;i++){ 
-//  if(sheet_LE.isRowHiddenByFilter(i) ){
-//    console.log(i)
-//    var spreadsheet = SpreadsheetApp.getActive();
-//       spreadsheet.getRange('I1').activate();
-//       spreadsheet.getActiveSheet().getFilter().remove();
-//    break;
-//  }
-// }
+
+if(sheet_LE.isRowHiddenByFilter(4) ){
+  sheet_LE.getRange('I1').activate();
+  sheet_LE.getFilter().remove();
+}
+
 
 if( sheet_LE.getFilter() == null)sheet_LE.getRange(`A1:T${lastRow}`).createFilter();
 
